@@ -1,10 +1,18 @@
 import React from 'react'
-
-const CountryPicker = () => {
+import NativeSelect from '@material-ui/core/NativeSelect'
+import FormControl from '@material-ui/core/FormControl'
+const CountryPicker = ({ countries, handleCountryChange }) => {
     return (
-        <div>
-            <h1>Country picker</h1>
-        </div>
+        <FormControl style={{ marginTop: 20, marginBottom: 20 }}>
+            <NativeSelect
+                defaultValue="global"
+                onChange={e => handleCountryChange(e.target.value)} >
+                <option value="global">Global</option>
+                {countries.map((country, index) => (
+                    <option key={index} value={country}>{country}</option>
+                ))}
+            </NativeSelect>
+        </FormControl>
     )
 }
 
